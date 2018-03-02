@@ -24,20 +24,5 @@ export default class SudokuStore
 			this.fixed[i] = 0;
 		}
 */
-		this.tick();
-	}
-
-	tick()
-	{
-		setTimeout(() => {
-			this.increment()
-			this.tick()
-		}, 1000)
-	}
-
-	@action
-	increment()
-	{
-		this.time++;
 	}
 }

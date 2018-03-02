@@ -23,7 +23,7 @@ export default class GameBoard extends Component {
 					id={i}
 					key={i}
 					value={value}
-					additionalClasses={ i == selected ? ' sfSelected' : ((x + y) % 2 == 0 ? ' sfLight' : '') + (fixed[i] ? ' sfFix' : '') }
+					additionalClasses={ (i == selected ? ' sfSelected' : '') + ((x + y) % 2 == 0 ? ' sfLight' : '') + (fixed[i] ? ' sfFix' : '') }
 				/>
 			);
 		});
