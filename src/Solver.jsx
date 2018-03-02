@@ -1,8 +1,10 @@
+import SudokuStore from './SudokuStore';
+
 export default class Solver
 {
-	static init(board)
+	static initSolver(store)
 	{
-		this.board = board;//board.slice(0, board.length);
+		this.store = store;
 
 		this.rows = [];
 		this.cols = [];
@@ -33,7 +35,28 @@ export default class Solver
 
 		this.nums = new Map([[0, 1], [1, 1], [2, 1], [4, 1], [8, 1], [16, 1], [32, 1], [64, 1], [128, 1], [256, 1]]);
 
+		this.copyBoard();
 		this.simplify();
+	}
+
+	static copyBoard()
+	{
+		this.solution = this.solution || [];
+		this.board = this.board || [];
+		this.order = this.order || [];
+
+		for (let i = 0; i < 81; i++)
+		{
+			this.solution[i] = '';
+			this.board[i] = this.store.boardData[i];
+			this.order[i] = this.store.order[i];
+		}
+	}
+
+	// With this function we can copy back the result to the store
+	static copyBoardBack()
+	{
+		this.store.copyBoardBack(this.board, this.order);
 	}
 
 	static simplifyOne(a)

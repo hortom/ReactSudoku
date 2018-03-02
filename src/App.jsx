@@ -12,7 +12,7 @@ class App extends Component {
                     <h2>React Sudoku Solver</h2>
                 </div>
                 <GameBoard store={this.props.store}/>
-                <GameInput />
+                <GameInput store={this.props.store}/>
             </div>
         );
     }

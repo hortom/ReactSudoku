@@ -2,11 +2,15 @@
 	width: 45em;
 }
 
-.GameInput input {
+.GameInput--input, .GameInput--input__active {
 	width: 100%;
 	font-size: 1.3em;
 	background-color: rgba(255,255,255,0.5);
 	border: 0 solid rgba(0,0,0,0);
 	border-radius: 0.2em;
 	padding: 0.4em;
+}
+
+.GameInput--input__active {
+	background-color: rgba(141, 58, 120, 0.678);
 }
