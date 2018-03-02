@@ -1,0 +1,43 @@
+.SudokuField {
+	width: 5em;
+	height: 5em;
+	display: block;
+	text-align: center;
+	float: left;
+	background-color: rgb(71, 116, 122);
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	color: #cbe4ea;
+}
+
+.SudokuField h1 {
+	font-size: 3em;
+	line-height: 1.7em;
+	margin: 0;
+	font-family: "Times New Roman", serif;
+	font-weight: bold;
+}
+
+.SudokuField span {
+	margin: 0;
+	line-height: 1.4em;
+	font-family: "Courier New", monospace;
+	letter-spacing: 0.5em;
+	color: rgb(186, 212, 212);
+}
+
+.sfNums {
+	padding-left: 0.4em;
+	padding-top: 0.1em;
+}
+
+.sfFix {
+	color: #202c2e;
+}
+
+.sfLight {
+	background-color: rgb(97, 151, 158);
+}
+
+.sfSelected {
+	background-color: rgba(141, 58, 120, 0.678);
+}

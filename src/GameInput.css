@@ -1,0 +1,12 @@
+.GameInput {
+	width: 45em;
+}
+
+.GameInput input {
+	width: 100%;
+	font-size: 1.3em;
+	background-color: rgba(255,255,255,0.5);
+	border: 0 solid rgba(0,0,0,0);
+	border-radius: 0.2em;
+	padding: 0.4em;
+}

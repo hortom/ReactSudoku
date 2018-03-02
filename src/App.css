@@ -1,0 +1,16 @@
+.App-header {
+    text-align: center;
+    background-color: #00000050;
+    height: 3em;
+    line-height: 3em;
+    color: white;
+    margin-bottom: 0.5em;
+}
+
+.App-header h2 {
+    margin: 0;
+}
+
+.App-intro {
+    font-size: 1.5em;
+}
