@@ -1,11 +1,29 @@
 .Button {
 	border-radius: 0.3em;
 	border: 1px solid rgba(255, 255, 255, 0.5);
-	background: #2ba87f;
 	color: #fff;
 	padding: 0.3em;
-	margin: 0.3em 0.3em 0 0;
+	margin-top: 0.5em;
 	width: max-content;
 	height: min-content;
 	cursor: pointer;
+}
+
+.BfLeft {
+	float: left;
+	margin-right: 0.3em;
+}
+
+.BfRight {
+	float: right;
+	margin-left: 0.3em;
+}
+
+
+.Button__func {
+	background: #bb7316;
+}
+
+.Button__solve {
+	background: #2ba87f;
 }

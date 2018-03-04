@@ -44,6 +44,12 @@ export default class EventHandler
 				case 'ButtonFillSingles':
 					store.fillSingles();
 					break;
+				case 'ButtonImport':
+					store.importBoard((document.getElementById("GameInput") as HTMLInputElement).value);
+					break;
+				case 'ButtonExport':
+					(document.getElementById("GameInput") as HTMLInputElement).value = store.exportBoard();
+					break;
 				default:
 					if (id.indexOf("sf-") == 0)
 					{

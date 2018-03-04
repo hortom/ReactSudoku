@@ -43,6 +43,25 @@ export default class SudokuStore
 	}
 
 	@action
+	importBoard(b)
+	{
+		parseBoard(b, this.boardData, this.order);
+		this.init();
+		this.simplify();
+	}
+
+	exportBoard()
+	{
+		let s = "";
+		for (let i = 0; i < 81; i++)
+		{
+			s += this.order[i] >= 0 && this.nums.has(this.boardData[i]) ? this.nums.get(this.boardData[i]) : '.';
+		}
+
+		return s;
+	}
+
+	@action
 	setField(value:number, eliminate:boolean)
 	{
 		const v = 1 << (value - 1);

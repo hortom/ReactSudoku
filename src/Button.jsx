@@ -10,7 +10,7 @@ export default class GameBoard extends Component
 		return (
 			<div
 				id={this.props.id}
-				className="Button"
+				className={"Button" + this.props.classes}
 			>
 				{this.props.text}
 			</div>

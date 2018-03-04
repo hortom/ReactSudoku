@@ -6,7 +6,7 @@ The **purpose** of this repo is to learn React, [Mobx](https://github.com/mobxjs
 
 ### Todo
 * ~~Adding Mobx~~
-* Import, export functionality
+* Import, export functionality - WIP
 * Handle Events (mouse, keyboard) - WIP
 * Implement a solver wiht some simple heuristic and brute force if needed - WIP
 
