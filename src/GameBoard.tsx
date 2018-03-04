@@ -1,17 +1,12 @@
 import * as React from "react";
-import { Component } from 'react';
-import SudokuField from './SudokuField.jsx';
+import SudokuField from './SudokuField';
 import { observer } from 'mobx-react';
 
 import './GameBoard.css';
 
 @observer
-export default class GameBoard extends Component {
-	constructor(props)
-	{
-		super(props);
-	}
-
+export default class GameBoard extends React.Component<any, any>
+{
 	render()
 	{
 		const { boardData, selected, order, isValid } = this.props.store;

@@ -1,11 +1,13 @@
 import * as React from "react";
-import { Component } from 'react';
-import GameBoard from './GameBoard.jsx';
-import GameInput from './GameInput.jsx';
+import GameBoard from './GameBoard';
+import GameInput from './GameInput';
+
 import './App.css';
 
-class App extends Component {
-    render() {
+class App extends React.PureComponent<any, any>
+{
+	render()
+	{
         return (
             <div className="App">
                 <div className="App-header">

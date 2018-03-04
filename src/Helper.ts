@@ -1,4 +1,4 @@
-import Solver from './Solver.jsx';
+import Solver from './Solver';
 
 export function parseBoard(s, board, order)
 {

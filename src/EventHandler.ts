@@ -104,15 +104,20 @@ console.log(event.key);
 				case "7":
 				case "8":
 				case "9":
-					const value = event.key.charCodeAt(0) - 48;
-					console.log("value: ", value);
-					store.setField(value, true);
+					if (store.isValid)
+					{
+						const value = event.key.charCodeAt(0) - 48;
+						console.log("value: ", value);
+						store.setField(value, true);
+					}
 					break;
+				case "Backspace":
 				case "Delete":
 					store.clearField();
 					break;
 				case "Enter":
-					store.fillSingles();
+					if (store.isValid)
+						store.fillSingles();
 					break;
 				default:
 					return; // Quit when this doesn't handle the key event.

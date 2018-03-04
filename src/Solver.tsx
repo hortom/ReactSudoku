@@ -2,6 +2,16 @@ import SudokuStore from './SudokuStore';
 
 export default class Solver
 {
+	static store:SudokuStore;
+	static rows:Array<Array<number>>;
+	static cols:Array<Array<number>>;
+	static sqrs:Array<Array<number>>;
+	static nums:Map<number, number> = new Map([[0, 1], [1, 1], [2, 2], [4, 3], [8, 4], [16, 5], [32, 6], [64, 7], [128, 8], [256, 9]]);;
+
+	static board:Array<number> = [];
+	static order:Array<number> = [];
+	static solution:Array<string> = [];
+
 	static initSolver(store)
 	{
 		this.store = store;
@@ -33,18 +43,12 @@ export default class Solver
 			[60, 61, 62, 69, 70, 71, 78, 79, 80]
 		];
 
-		this.nums = new Map([[0, 1], [1, 1], [2, 2], [4, 3], [8, 4], [16, 5], [32, 6], [64, 7], [128, 8], [256, 9]]);
-
 		this.copyBoard();
 		this.simplify();
 	}
 
 	static copyBoard()
 	{
-		this.solution = this.solution || [];
-		this.board = this.board || [];
-		this.order = this.order || [];
-
 		for (let i = 0; i < 81; i++)
 		{
 			this.solution[i] = '';
@@ -61,7 +65,7 @@ export default class Solver
 
 	static simplifyOne(a)
 	{
-		var occ = 0, v = 0, modified = false;
+		let occ = 0, v = 0, modified = false;
 		for (let i = 0; i < 9; i++) // collect every single number
 		{
 			v = Math.abs(this.board[a[i]]);
@@ -87,14 +91,15 @@ export default class Solver
 
 	static simplify()
 	{
+		let modified:boolean; // any new single value?
 		do
 		{
-			var modified = false; // any new single value?
+			modified = false;
 			for (let i = 0; i < 9; i++)
 			{
-				modified = this.simplifyOne(this.rows[i]) || modified;
-				modified = this.simplifyOne(this.cols[i]) || modified;
-				modified = this.simplifyOne(this.sqrs[i]) || modified;
+				modified = this.simplifyOne(this.rows[i]) ||
+					this.simplifyOne(this.cols[i]) ||
+					this.simplifyOne(this.sqrs[i]) || modified;
 			}
 		} while(modified);
 
@@ -103,7 +108,7 @@ export default class Solver
 
 	static isValidGroup(g)
 	{
-		var v = 0, s = 0;
+		let v = 0, s = 0;
 		for (let i = 0; i < 9; i++)
 		{
 			v = this.board[g[i]];

@@ -1,9 +1,8 @@
 import * as React from "react";
-import { Component } from 'react';
 
 import './Button.css';
 
-export default class GameBoard extends Component
+export default class GameBoard extends React.PureComponent<any, any>
 {
 	render()
 	{
