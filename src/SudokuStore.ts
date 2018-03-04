@@ -60,6 +60,14 @@ export default class SudokuStore
 	}
 
 	@action
+	undo()
+	{
+		if (this.nth == 1) return;
+		// find the latest
+		const i = this.order[this.nth - 1];
+	}
+
+	@action
 	copyBoardBack(b, o)
 	{
 		for (let i = 0; i < 81; i++)

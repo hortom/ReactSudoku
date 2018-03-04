@@ -33,7 +33,7 @@ export default class Solver
 			[60, 61, 62, 69, 70, 71, 78, 79, 80]
 		];
 
-		this.nums = new Map([[0, 1], [1, 1], [2, 1], [4, 1], [8, 1], [16, 1], [32, 1], [64, 1], [128, 1], [256, 1]]);
+		this.nums = new Map([[0, 1], [1, 1], [2, 2], [4, 3], [8, 4], [16, 5], [32, 6], [64, 7], [128, 8], [256, 9]]);
 
 		this.copyBoard();
 		this.simplify();
@@ -87,15 +87,45 @@ export default class Solver
 
 	static simplify()
 	{
-		var modified = false; // any new single value?
+		do
+		{
+			var modified = false; // any new single value?
+			for (let i = 0; i < 9; i++)
+			{
+				modified = this.simplifyOne(this.rows[i]) || modified;
+				modified = this.simplifyOne(this.cols[i]) || modified;
+				modified = this.simplifyOne(this.sqrs[i]) || modified;
+			}
+		} while(modified);
+	}
+
+	static isValidGroup(g)
+	{
+		var v = 0, s = 0;
 		for (let i = 0; i < 9; i++)
 		{
-			modified = modified || this.simplifyOne(this.rows[i]);
-			modified = modified || this.simplifyOne(this.cols[i]);
-			modified = modified || this.simplifyOne(this.sqrs[i]);
+			v = this.board[g[i]];
+			if (this.nums.has(v)) // if a single digit
+			{
+				if ((s & v) != 0) return false;
+				s = s | v;
+			}
 		}
 
-		if (modified)
-			this.simplify();
+		return true;
+	}
+
+	static isValid()
+	{
+		if (this.board.indexOf(0) != -1) return false;
+
+		for (let i = 0; i < 9; i++)
+		{
+			if (this.isValidGroup(this.rows[i]) == false) return false;
+			if (this.isValidGroup(this.cols[i]) == false) return false;
+			if (this.isValidGroup(this.sqrs[i]) == false) return false;
+		}
+
+		return true;
 	}
 }

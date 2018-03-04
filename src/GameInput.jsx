@@ -1,7 +1,9 @@
 import * as React from 'react'
 import { Component } from 'react'
-import './GameInput.css';
 import { observer } from 'mobx-react';
+import Button from './Button.jsx';
+
+import './GameInput.css';
 
 @observer
 export default class GameInput extends Component {
@@ -30,6 +32,7 @@ export default class GameInput extends Component {
 		return (
 			<div className="GameInput">
 				<input
+					id="GameInput"
 					ref={(input) => { this.textInput = input; }}
 					className={className}
 					type="text"
@@ -37,6 +40,7 @@ export default class GameInput extends Component {
 					title="Sudoku puzzle, allowed: 0-9 dot and space."
 					placeholder="Input Sudoku here..."
 				/>
+				<Button id="ButtonUndo" text="Undo" />
 			</div>
 		)
 	}
