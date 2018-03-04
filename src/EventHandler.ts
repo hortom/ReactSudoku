@@ -41,8 +41,9 @@ export default class EventHandler
 				case 'root':
 					store.active = "board";
 					break;
-				case 'ButtonUndo':
-					store.undo();
+				case 'ButtonFillSingles':
+					store.fillSingles();
+					break;
 				default:
 					if (id.indexOf("sf-") == 0)
 					{
@@ -100,6 +101,12 @@ console.log(event.key);
 					const value = event.key.charCodeAt(0) - 48;
 					console.log("value: ", value);
 					store.setField(value, true);
+					break;
+				case "Delete":
+					store.clearField();
+					break;
+				case "Enter":
+					store.fillSingles();
 					break;
 				default:
 					return; // Quit when this doesn't handle the key event.

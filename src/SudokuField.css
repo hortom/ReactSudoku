@@ -41,3 +41,7 @@
 .sfSelected {
 	background-color: rgba(141, 58, 120, 0.678);
 }
+
+.sfInvaild {
+	border: 1px solid rgb(179, 32, 32);
+}

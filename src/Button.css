@@ -5,7 +5,7 @@
 	color: #fff;
 	padding: 0.3em;
 	margin: 0.3em 0.3em 0 0;
-	width: min-content;
+	width: max-content;
 	height: min-content;
 	cursor: pointer;
 }

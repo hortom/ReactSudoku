@@ -97,6 +97,8 @@ export default class Solver
 				modified = this.simplifyOne(this.sqrs[i]) || modified;
 			}
 		} while(modified);
+
+		this.store.isValid = this.isValid();
 	}
 
 	static isValidGroup(g)

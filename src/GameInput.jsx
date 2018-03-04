@@ -40,7 +40,7 @@ export default class GameInput extends Component {
 					title="Sudoku puzzle, allowed: 0-9 dot and space."
 					placeholder="Input Sudoku here..."
 				/>
-				<Button id="ButtonUndo" text="Undo" />
+				<Button id="ButtonFillSingles" text="Fill Singles (ENTER)" />
 			</div>
 		)
 	}

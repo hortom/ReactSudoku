@@ -14,7 +14,7 @@ export default class GameBoard extends Component {
 
 	render()
 	{
-		const { boardData, selected, order } = this.props.store;
+		const { boardData, selected, order, isValid } = this.props.store;
 		const active = this.props.store.active == "board";
 		const board = boardData.map(function(value, i) {
 			const x = Math.floor((i % 9) / 3);
@@ -25,7 +25,12 @@ export default class GameBoard extends Component {
 					key={i}
 					value={value}
 					order={order[i]}
-					additionalClasses={ (active && i == selected ? ' sfSelected' : '') + ((x + y) % 2 == 0 ? ' sfLight' : '') + (order[i] == 0 ? ' sfFix' : '') }
+					additionalClasses={
+						(active && i == selected ? ' sfSelected' : '') +
+						((x + y) % 2 == 0 ? ' sfLight' : '') +
+						(order[i] == 0 ? ' sfFix' : '') +
+						(isValid ? '' : ' sfInvaild') 
+					}
 				/>
 			);
 		});

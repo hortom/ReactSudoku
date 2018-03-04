@@ -5,6 +5,7 @@ import Solver from './Solver.jsx';
 export default class SudokuStore
 {
 	@observable boardData = [];
+	@observable isValid = true;
 	@observable order = []; // 0. fixed, any other like 1., 2., 3. is the order of the filled fields
 	@observable active = 'board'; // what is the active area: board, input, none
 	@observable selected = -1; // selected field on the board
@@ -13,6 +14,7 @@ export default class SudokuStore
 	@observable time = 0;
 
 	nth = 1;
+	nums = new Map([[0, 1], [1, 1], [2, 2], [4, 3], [8, 4], [16, 5], [32, 6], [64, 7], [128, 8], [256, 9]]);
 
 	constructor()
 	{
@@ -52,19 +54,43 @@ export default class SudokuStore
 			
 			if (eliminate)
 			{
-				Solver.copyBoard();
-				Solver.simplify();
-				Solver.copyBoardBack();
+				this.simplify();
 			}
 		}
 	}
 
 	@action
-	undo()
+	clearField()
 	{
-		if (this.nth == 1) return;
-		// find the latest
-		const i = this.order[this.nth - 1];
+		if (this.order[this.selected] > 0)
+		{
+			for (let i = 0; i < 81; i++)
+			{
+				if (this.order[i] < 0 || !this.nums.has(this.boardData[i]))
+					this.boardData[i] = 511;
+			}
+			this.order[this.selected] = -1;
+			this.boardData[this.selected] = 511;
+
+			this.simplify();
+		}
+	}
+
+	simplify()
+	{
+		Solver.copyBoard();
+		Solver.simplify();
+		Solver.copyBoardBack();
+	}
+
+	@action
+	fillSingles()
+	{
+		for (let i = 0; i < 81; i++)
+		{
+			if (this.order[i] < 0 && this.nums.has(this.boardData[i]))
+				this.order[i] = this.nth++;
+		}	
 	}
 
 	@action
