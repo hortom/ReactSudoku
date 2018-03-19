@@ -1,5 +1,5 @@
 import {observable, computed, action, reaction } from "mobx";
-import { parseBoard } from './Helper';
+import { parseBoard } from './util/Helper';
 import Solver from './Solver';
 
 export default class SudokuStore

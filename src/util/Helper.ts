@@ -1,4 +1,4 @@
-import Solver from './Solver';
+import Solver from '../Solver';
 
 export function parseBoard(s, board, order)
 {
@@ -22,4 +22,15 @@ export function parseBoard(s, board, order)
 			order[i] = -1;
 		}
 	}
+}
+
+export function checkValidity(board)
+{
+	if (board)
+	{
+		//for ()
+
+		return '';
+	}
+	else return 'The board is undefined';
 }
